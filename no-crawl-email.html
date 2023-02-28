@@ -1,0 +1,39 @@
+<!-- A very simple technique to prevent your email address to work like a charm
+    for your site visitors but prevent it from getting crawled by bots.
+    Its based on jQuery but can easily be converted to javascript also.
+--><!doctype html>
+<html lang="en">
+<head>
+	<title>No Crawl Email Address, Proof of Concept</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+</head>
+<body>
+	<div>This is a demo of displaying your email address as html to your visitors</div>
+	<div id="mail_as_text">Email: [Refresh]</div>
+	
+	<div style="height: 20px;">&nbsp;</div>
+
+	<div>This is a demo of displaying your email as clickable working email address</div>
+	<div><a id="mail_as_href" href="[refresh]">Click to Email</a></div>
+
+	<div style="height: 20px;">&nbsp;</div>
+	<div>on GITHUB </div>
+
+  <script>
+  $(document).ready(function() {
+    // Suppose you have email address, name@fakedomain.com and you want
+    // to show this to your site visitors but do not want it to get crawled by bots.
+    // Now simply put your email address like this
+
+    __eml_adr = 'name#fakedomain%com'.replace('#','@').replace('%','.');
+    // This is very basic encryption just to present proof of concept but you
+    // can increse the security by using more complext way to cypher and then
+    // decypher it using custom javascript functions insted of replace function.
+
+    // Now make it usable for your site visitors
+    $('#mail_as_text')[0].innerText = 'Email: '+__eml_adr;
+    $('#mail_as_href').attr('href', 'mailto:'+__eml_adr);
+  });
+  </script>
+</body>
+</html>
